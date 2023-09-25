@@ -74,7 +74,33 @@ themeButton.addEventListener('click', () => {
     // Add or remove the dark / icon theme
     document.body.classList.toggle(darkTheme)
     themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
+
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
+})
+
+
+function scaleCv() {
+    document.body.classList.add('scale-cv')
+}
+function removeScale() {
+    document.body.classList.remove('scale-cv')
+}
+const areaCv = document.getElementById('area-cv')
+const resumeBtn = document.getElementById('resume-button')
+
+const opt = {
+    margin:       0,
+    filename:     'Aliaksandr-Horbach-CV.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 4 },
+    jsPDF:        { format: 'A4', orientation: 'portrait' }
+};
+function generateResume(){
+    html2pdf(areaCv, opt);
+}
+resumeBtn.addEventListener('click', ()=>{
+    scaleCv()
+    generateResume()
+    setTimeout(removeScale,5000)
 })
