@@ -245,6 +245,10 @@ img {
     transition: .3s;
 }
 
+.l-footer {
+    font-size: .5rem;
+}
+
 .nav {
     height: var(--header-height);
     display: flex;
